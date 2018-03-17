@@ -1,0 +1,23 @@
+body{
+    background-color: azure;
+    padding: 20px 30px;
+    text-align: center;
+}
+.title{
+    color:mediumpurple;
+}
+.explanation h2{
+    color:mediumpurple;
+}
+.explanation p{
+    font-size: 18px;
+}
+.explanation strong{
+    color: red;
+}
+.footer{
+    padding-top: 200px;
+}
+em{
+    font-size: 15px;
+}

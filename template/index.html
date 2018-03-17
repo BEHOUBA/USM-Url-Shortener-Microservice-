@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="title">
+        <h1>URL SHORTENER MICROSERVICE PROJET FROM FREECODECAMP WITH GOLANG</h1>
+    </div>
+    <div class="explanation">
+        <h2>HOW TO USE THIS MICROSERVICE:</h2>
+        <p>This api allow user to create a short version of a long url. </p>
+        <div>
+            <p> To do so you need to : </p>
+            <ul style="text-align:left">
+                <li>
+                    Option 1: entrer the long url you want to make short into the input field below.
+                </li>
+                <li>
+                    Option 2: or simply put the long url next of the: https://localhost:8080/new/.
+                    <p>Exemple: http://localhost:8080/new/<strong>https://www.the_long_url.com.</strong> (<em>Notice that this is not a valid url</em>)</p> 
+                </li>
+            </ul>  
+           <p>you will get a json data with the original url and it short version.</p> 
+        </div>
+        <div>
+            <form action="/submit/?long_url">
+                <input name="long_url" style="width:50%" type="text" placeholder="Entrer the url original url here...">
+                <input type="submit" value="GET SHORT URL">
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        CODED AND DESINED BY: <a href="https://github.com/behouba" target="blank">K BEHOUBA MANASSE</a>
+    </div>
+</body>
+</html>
