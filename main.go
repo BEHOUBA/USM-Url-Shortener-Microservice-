@@ -55,9 +55,10 @@ func indexFunc(w http.ResponseWriter, r *http.Request) {
 // make get the long_url value, create the short url and give back the json data
 func submitFunc(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	newURLPair, err := createShortURL(r.Form["long_url"][0])
+	rawURL := r.Form["long_url"][0]
+	newURLPair, err := createShortURL(rawURL)
 	if err != nil {
-		displayErrorPage(w, r, err.Error())
+		displayErrorJSON(w, rawURL)
 		return
 	}
 	if err := newURLPair.getUrls(); err != nil {
@@ -84,9 +85,10 @@ func redirectToOriginal(w http.ResponseWriter, r *http.Request) {
 // urlShortenestFunc take long url from url field of the browser
 // create the short url corresponding and send back the json data
 func urlShortenerFunc(w http.ResponseWriter, r *http.Request) {
-	newURLPair, err := createShortURL(r.URL.RequestURI()[5:])
+	rawURL := r.URL.RequestURI()[5:]
+	newURLPair, err := createShortURL(rawURL)
 	if err != nil {
-		displayErrorPage(w, r, err.Error())
+		displayErrorJSON(w, rawURL)
 		return
 	}
 
@@ -127,7 +129,7 @@ func getURLCount() string {
 	return strconv.Itoa(idNumber + 1)
 }
 
-func displayErrorPage(w http.ResponseWriter, r *http.Request, err string) {
-	templ := template.Must(template.ParseFiles("template/error.html"))
-	templ.Execute(w, err)
+func displayErrorJSON(w http.ResponseWriter, originalURL string) {
+	errorResponse := URLpair{originalURL, "error invalid url format!"}
+	fmt.Fprint(w, generateResponse(errorResponse))
 }

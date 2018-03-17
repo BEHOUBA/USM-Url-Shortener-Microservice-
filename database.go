@@ -40,6 +40,5 @@ func (urls *URLpair) getUrls() (err error) {
 		urls.storeUrls()
 		return
 	}
-	fmt.Println(urls)
 	return
 }
